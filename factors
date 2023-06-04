@@ -4,31 +4,33 @@ import sys
 import time
 
 def factorize(n):
-   for i in range(2, int(n**0.5) + 1):
-     if n % i == 0:
-       return (i, n // i)
-     return None
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return (i, n // i)
+    return None
+
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-      print("Usage: factors <file>")
-      exit()
+        print("Usage: factors <file>")
+        exit()
 
-    input_file  = sys.argv[1]
+    input_file = sys.argv[1]
 
     try:
-         with open(input_file, 'r') as f:
+        with open(input_file, 'r') as f:
             lines = f.readlines()
     except FileNotFoundError:
-          print("FILE NOT FOUNT")
-    exit()
+        print("FILE NOT FOUND")
+        exit()
 
     start_time = time.time()
-    
+
     for line in lines:
-      n = int(line.strip())
-      factors = factorize(n)
-    if factors:
-      print(f"{n}{factors[0]}*{factors[1]}")
-      if time.time() - start_time > 5:
-         print("TIME LIMIT ESCEEDE")
-    exit()
+        n = int(line.strip())
+        factors = factorize(n)
+        if factors:
+            print(f"{n} = {factors[0]} * {factors[1]}")
+        if time.time() - start_time > 5:
+            print("TIME LIMIT EXCEEDED")
+            exit()
+
