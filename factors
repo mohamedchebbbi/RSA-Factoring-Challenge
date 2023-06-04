@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 
 import sys
-import time
 import signal
 
 def factorize(n):
@@ -11,7 +10,7 @@ def factorize(n):
     return None
 
 def timeout_handler(signum, frame):
-    raise TimeoutError("TIME LIMIT EXCEEDED")
+    raise TimeoutError
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
@@ -37,6 +36,5 @@ if __name__ == "__main__":
             if factors:
                 print(f"{n}={factors[0]}*{factors[1]}")
     except TimeoutError:
-        print("TIME LIMIT EXCEEDED")
-        exit()
+        pass
 
